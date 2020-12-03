@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-export default function TableDatePicker() {
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
-
+export default function TableDatePicker({
+  startDate,
+  endDate,
+  handleStartDateChange,
+  handleEndDateChange,
+}) {
   return (
     <div>
       <DatePicker
@@ -19,7 +19,7 @@ export default function TableDatePicker() {
         selectsStart
         startDate={startDate}
         endDate={endDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={(date) => handleStartDateChange(date)}
       />
       <DatePicker
         filterDate={(d) => {
@@ -32,7 +32,7 @@ export default function TableDatePicker() {
         startDate={startDate}
         endDate={endDate}
         minDate={startDate}
-        onChange={(date) => setEndDate(date)}
+        onChange={(date) => handleEndDateChange(date)}
       />
     </div>
   )

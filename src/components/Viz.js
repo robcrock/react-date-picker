@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react"
 
 const { tableau } = window
 
-export default function Viz() {
+export default function Viz({ startDate, endDate }) {
   // State variables
   const [viz, setViz] = useState(null)
   const [year, setYear] = useState(9)
