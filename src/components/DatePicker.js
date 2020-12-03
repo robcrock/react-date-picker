@@ -4,8 +4,8 @@ import "react-datepicker/dist/react-datepicker.css"
 export default function TableDatePicker({
   startDate,
   endDate,
-  handleStartDateChange,
-  handleEndDateChange,
+  setStartDate,
+  setEndDate,
 }) {
   return (
     <div>
@@ -19,7 +19,7 @@ export default function TableDatePicker({
         selectsStart
         startDate={startDate}
         endDate={endDate}
-        onChange={(date) => handleStartDateChange(date)}
+        onChange={(date) => setStartDate(date)}
       />
       <DatePicker
         filterDate={(d) => {
@@ -32,7 +32,7 @@ export default function TableDatePicker({
         startDate={startDate}
         endDate={endDate}
         minDate={startDate}
-        onChange={(date) => handleEndDateChange(date)}
+        onChange={(date) => setEndDate(date)}
       />
     </div>
   )
