@@ -1,7 +1,7 @@
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-export default function TableDatePicker({
+export default function DateRange({
   startDate,
   endDate,
   setStartDate,
@@ -19,7 +19,10 @@ export default function TableDatePicker({
         selectsStart
         startDate={startDate}
         endDate={endDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={(date) => {
+          setStartDate(date)
+          console.log(date)
+        }}
       />
       <DatePicker
         filterDate={(d) => {
