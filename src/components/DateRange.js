@@ -10,6 +10,7 @@ export default function DateRange({
   return (
     <div>
       <DatePicker
+        isClearable
         filterDate={(d) => {
           return new Date() > d
         }}
@@ -24,6 +25,7 @@ export default function DateRange({
         }}
       />
       <DatePicker
+        isClearable
         filterDate={(d) => {
           return new Date() > d
         }}
