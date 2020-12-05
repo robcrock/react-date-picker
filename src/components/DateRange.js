@@ -21,7 +21,6 @@ export default function DateRange({
         endDate={endDate}
         onChange={(date) => {
           setStartDate(date)
-          console.log(date)
         }}
       />
       <DatePicker
