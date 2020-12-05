@@ -34,9 +34,9 @@ export default function Viz({ startDate, endDate }) {
       startMonth = 0
       startDay = 1
     } else {
-      startYear = startDate.getUTCFullYear()
-      startMonth = startDate.getUTCMonth()
-      startDay = startDate.getUTCDate()
+      startYear = startDate._d.getUTCFullYear()
+      startMonth = startDate._d.getUTCMonth()
+      startDay = startDate._d.getUTCDate()
     }
 
     if (viz !== null) {
@@ -67,9 +67,9 @@ export default function Viz({ startDate, endDate }) {
       endMonth = 11
       endDay = 31
     } else {
-      endYear = endDate.getUTCFullYear()
-      endMonth = endDate.getUTCMonth()
-      endDay = endDate.getUTCDate()
+      endYear = endDate._d.getUTCFullYear()
+      endMonth = endDate._d.getUTCMonth()
+      endDay = endDate._d.getUTCDate()
     }
 
     if (viz !== null) {
