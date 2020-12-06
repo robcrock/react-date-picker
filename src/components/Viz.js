@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react"
+import moment from "moment"
 
 const { tableau } = window
 
-export default function Viz({ startDate, endDate }) {
+export default function Viz({ startDate, endDate, setStartDate, setEndDate }) {
   const [viz, setViz] = useState(null)
 
   // Set up the arguments to pass into the Tableau Viz function
@@ -14,6 +15,13 @@ export default function Viz({ startDate, endDate }) {
     hideToolbar: true,
     width: "900px",
     height: "540px",
+    onFirstInteractive: function() {
+      // The viz is now ready and can be safely used.
+      // To prove that it's work and shift to more relevant dates
+      // we'll set the initial date range to all of 2019.
+      setStartDate(moment([2019, 0, 1]))
+      setEndDate(moment([2019, 11, 31]))
+    },
   }
 
   // This function will be run on page load to initialize our viz.

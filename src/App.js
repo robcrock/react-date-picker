@@ -1,46 +1,54 @@
-import React, { Component, useState } from "react"
+import React, { Component } from "react"
+import "react-dates/lib/css/_datepicker.css"
 import "./styles/app.css"
 
 import "react-dates/initialize"
-import "react-dates/lib/css/_datepicker.css"
-
-import Viz from "./components/Viz"
-import DateRange from "./components/DateRange"
 import { DateRangePicker } from "react-dates"
 
-class App extends Component {
+import Viz from "./components/Viz"
+
+export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       startDate: null,
       endDate: null,
+      focused: null,
     }
   }
 
-  // function App() {
-  // We lift the State from the DateRange to the App, so we can listen
-  // for the Effect by passing the startDate and endDate into the Viz
-  // const [startDate, setStartDate] = useState(null)
-  // const [endDate, setEndDate] = useState(null)
+  // Create the two handler functions to allow us to update the State when
+  // the Viz first initializes
+  setStartDate = (date) => {
+    this.setState({ startDate: date })
+  }
+
+  setEndDate = (date) => {
+    this.setState({ endDate: date })
+  }
 
   render() {
     return (
       <>
         <DateRangePicker
-          startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-          endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+          isOutsideRange={() => false}
+          startDate={this.state.startDate}
+          startDateId="your_unique_start_date_id"
+          endDate={this.state.endDate}
+          endDateId="your_unique_end_date_id"
           onDatesChange={({ startDate, endDate }) =>
             this.setState({ startDate, endDate })
-          } // PropTypes.func.isRequired,
-          focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-          onFocusChange={(focusedInput) => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+          }
+          focusedInput={this.state.focusedInput}
+          onFocusChange={(focusedInput) => this.setState({ focusedInput })}
         />
-        <Viz startDate={this.state.startDate} endDate={this.state.endDate} />
+        <Viz
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          setStartDate={this.setStartDate}
+          setEndDate={this.setEndDate}
+        />
       </>
     )
   }
 }
-
-export default App
